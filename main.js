@@ -1,5 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import Header from "./src/components/Header";
+import { Body } from "./src/components/Body"
 
 // ! classic old React way //
 const heading = React.createElement(
@@ -58,8 +60,15 @@ const HeadingComponent = () => (
   </div>
 );
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+// !Food ordering App //
+const AppLayout = () => {
+  return (
+    <div className="app">
+      <Header />
+      <Body />
+    </div>
+  );
+};
 
-console.log(parent);
-// root.render(heading);
-root.render(<HeadingComponent />);
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<AppLayout />);

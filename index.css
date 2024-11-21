@@ -42,3 +42,7 @@
   justify-content: space-between;
   list-style-type: circle;
 }
+.btn-login {
+    height: 50px;
+    cursor: pointer;
+}

@@ -17,3 +17,33 @@
 - Hosting on HTTPS
 - Tree shaking - remove unused code
 - Different dev and prod bundles
+
+# Component Composition
+
+# Conifg Driven UI
+
+# Shimmer UI
+
+# Conditional rendering
+
+# Two Types of Imports/Exports
+
+* Default Import/Export
+- export default component;
+- import component from "path";
+
+* Named Import/Export
+- export const component;
+- import {component} from "path";
+
+# React Hooks
+(Normal utility JS functions)
+- useState()
+- useEffect()
+
+# Diff Algorithm
+- Finds out the difference between DOMs
+- React Fiber (React 16)
+- Diff algorithm
+- Array destructuring in useState retur type
+

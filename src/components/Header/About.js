@@ -1,7 +1,8 @@
+import User from "./User";
 const About = () => {
     return (
         <div className="about">
-             A Simple About Page 
+             <h2><UserName/> </h2>
         </div>
     )
 }

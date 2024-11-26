@@ -1,11 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Header from "./src/components/Header";
-import { Body } from "./src/components/Body";
-import About from "./src/components/About";
-import Contactus from "./src/components/Contactus";
+import Header from "./src/components/Header/Header";
+import { Body } from "./src/components/Body/Body";
+import About from "./src/components/Header/About";
+import Contactus from "./src/components/Header/Contactus";
 import Error from "./src/components/Error";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import RestaurantMenu from "./src/components/Body/RestaurantMenu";
 
 // ! classic old React way //
 const heading = React.createElement(
@@ -69,7 +70,7 @@ const AppLayout = () => {
   return (
     <div className="app">
       <Header />
-      <Body />
+      <Outlet />
     </div>
   );
 };
@@ -78,16 +79,27 @@ const appRouter = createBrowserRouter([
     {
         path: "/",
         element: <AppLayout/>,
+        children: [
+            {
+                path: "/",
+                element: <Body/>
+            },
+            {
+                path: "/about",
+                element: <About/>
+            },
+            {
+                path: "/contactus",
+                element: <Contactus/>
+            },
+            {
+                path: "/restaurant/:restaurantId",
+                element: <RestaurantMenu/>
+            }
+        ],
         errorElement: <Error/>
-    },
-    {
-        path: "/about",
-        element: <About/>
-    },
-    {
-        path: "/contactus",
-        element: <Contactus/>
     }
+
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

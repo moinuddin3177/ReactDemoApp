@@ -47,3 +47,11 @@
 - Diff algorithm
 - Array destructuring in useState retur type
 
+# 2 Types of Routing in web apps
+- Client side routing
+- Server side routing
+
+# useState(), useEffect(), useRouteError(), useParams() -- React hooks
+
+# createBrowserRouter for routing
+

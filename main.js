@@ -2,13 +2,15 @@ import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom";
 import Header from "./src/components/Header/Header";
 import { Body } from "./src/components/Body/Body";
-import About from "./src/components/Header/About";
+// import About from "./src/components/Header/About";
 import Contactus from "./src/components/Header/Contactus";
 import Error from "./src/components/Error";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import RestaurantMenu from "./src/components/Body/RestaurantMenu";
 
 const Grocery = lazy( () => import ("./src/components/Grocery")); 
+const About = lazy( () => import ("./src/components/Header/About")); 
+
 // ! classic old React way //
 const heading = React.createElement(
   "h1",
@@ -86,7 +88,7 @@ const appRouter = createBrowserRouter([
             },
             {
                 path: "/about",
-                element: <About/>
+                element: <Suspense fallback="About Loading..."><About/></Suspense>
             },
             {
                 path: "/contactus",

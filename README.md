@@ -63,3 +63,6 @@
 - On demand loading
 - Dynamic imports
 
+# Custom Hooks
+- useRestaurantMenu
+

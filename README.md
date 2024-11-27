@@ -55,3 +55,11 @@
 
 # createBrowserRouter for routing
 
+# Lazy and Suspense
+- Chunking
+- Code Splitting
+- Dynamic bundling
+- Lazy loading
+- On demand loading
+- Dynamic imports
+

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom";
 import Header from "./src/components/Header/Header";
 import { Body } from "./src/components/Body/Body";
@@ -8,6 +8,7 @@ import Error from "./src/components/Error";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import RestaurantMenu from "./src/components/Body/RestaurantMenu";
 
+const Grocery = lazy( () => import ("./src/components/Grocery")); 
 // ! classic old React way //
 const heading = React.createElement(
   "h1",
@@ -15,7 +16,6 @@ const heading = React.createElement(
   "Hello from React package"
 );
 
-console.log(heading);
 
 //  ! Modern JSX way - trasnpiles before it reaches JS -- Parcel - Babel //
 //  ? JSX => React.CreateElement => ReactElement - JS Object => HTMLElement(render) //
@@ -95,6 +95,10 @@ const appRouter = createBrowserRouter([
             {
                 path: "/restaurant/:restaurantId",
                 element: <RestaurantMenu/>
+            },
+            {
+                path: "/grocery",
+                element: <Suspense fallback= { <h1>Loading..........</h1>}><Grocery/></Suspense>
             }
         ],
         errorElement: <Error/>

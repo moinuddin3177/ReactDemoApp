@@ -8,8 +8,6 @@ export const Body = () => {
   const [api_data, setapi_data] = useState([]);
   const [searchText, setSearchText] = useState("");
 
-  console.log("body rendered");
-
   useEffect(() => {
     fetchData();
   }, []);
@@ -46,7 +44,6 @@ export const Body = () => {
         ?.filter((card) => card?.card?.card?.info?.name)
         ?.map((card) => card?.card?.card?.info);
 
-      console.log(cardsWithName);
       setapi_data(cardsWithName);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -56,25 +53,27 @@ export const Body = () => {
   return api_data.length === 0 ? (
     <ShimmerCard />
   ) : (
-    <div className="body">
-      <div className="search">
+    <div className="bg-blue-900">
+      <div className="flex space-x-10 m-4 p-4">
         <input
-          className="search-box"
-          type="text-box"
+          className="border border-solid border-black"
+          type="text"
           value={searchText}
-          placeholder="Search restaurants"
+          placeholder=" Search restaurants "
           onChange={(e) => {
             setSearchText(e.target.value);
-            const searched_api_data = api_data.filter((restaurant) =>
-              restaurant.name
-                .toLowerCase()
-                .includes(e.target.value.toLowerCase())
-            );
-            setapi_data(searched_api_data);
+           
+              const searched_api_data = api_data.filter((restaurant) =>
+                restaurant.name
+                  .toLowerCase()
+                  .includes(e.target.value.toLowerCase())
+              );
+              setapi_data(searched_api_data);
+            
           }}
         />
         <button
-          className="filter-btn"
+          className="flex px-4 py-2 bg-green-200 rounded-lg"
           onClick={() => {
             const filtered_api_data = api_data.filter(
               (restaurant) => restaurant.avgRating >= 4.3
@@ -85,7 +84,7 @@ export const Body = () => {
           Top rated restaurants
         </button>
       </div>
-      <div className="restaurant-container">
+      <div className=" flex flex-wrap">
         {api_data.map((restaurant) => (
           <Link key={restaurant.name} to={"/restaurant/" + restaurant.id}><RestaurantCard restaurant_data={restaurant} /></Link>
         ))}

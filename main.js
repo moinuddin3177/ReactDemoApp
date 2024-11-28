@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import Header from "./src/components/Header/Header";
 import { Body } from "./src/components/Body/Body";
 // import About from "./src/components/Header/About";

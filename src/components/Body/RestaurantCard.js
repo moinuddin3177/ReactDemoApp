@@ -1,14 +1,13 @@
 import {Link} from "react-router-dom";
-import {IMG_CDN_URL} from "../../../utils/constant";
+import {imagesArray} from "../../../utils/constant";
 const RestaurantCard = (props) => {
-    const { name, cuisines, avgRating, sla, costForTwo, cloudinaryImageId } = props.restaurant_data;
-    console.log(IMG_CDN_URL + cloudinaryImageId);
+    const { name, cuisines, avgRating, sla, costForTwo } = props.restaurant_data;
 
     return (
-      <div className="restaurant-card" style={{ backgroundColor: "#f0f0f0" }}>
+      <div className="m-4 p-4 w-[250px] bg-pink-50 rounded-lg shadow-lg hover:bg-gray-300" >
         <Link to="/restaurantmenu"></Link>
-        <img className="restaurant-logo" alt="res-logo" src={IMG_CDN_URL + cloudinaryImageId}></img>
-        <h3>{name}</h3>
+        <img className="rounded-lg" src={imagesArray[Math.floor(Math.random() * imagesArray.length)]} />
+        <h3 className="font-bold py-2">{name}</h3>
         <h4>{cuisines.join(", ")}</h4>
         <h4>{avgRating}</h4>
         <h4>{sla.slaString}</h4>

@@ -15,28 +15,27 @@ const Header = () => {
   }, [buttontName])
 
   return (
-    <div className="header">
+    <div className="flex justify-between bg-pink-100 shadow-md m-2">
       <div className="logo-container">
-        <img className="logo" src={logo_url}></img>
+        <img className="w-56" src={logo_url}></img>
       </div>
-      <div className="nav-items">
-        <ul>
-          <li>
-            Online Status: {onlineStatus ?  "Green" : "Red"}
+      <div className="flex items-center">
+        <ul className="flex p-4 m-4 space-x-5">
+          <li className="px-4">
+            Online Status: {onlineStatus ?  "✅" : "❌"}
           </li>
-          <li>
+          <li className="px-4">
             <Link to="/">Home</Link>
           </li>
-          <li > 
+          <li className="px-4"> 
             <Link to="/about">About Us</Link>
           </li>
-          <li>
+          <li className="px-4">
             <Link to="/contactus">Contact Us</Link>
           </li>
-          <li>
+          <li className="px-4">
             <Link to="/grocery">Grocery</Link>
           </li>
-          <li>Cart</li>
           <button 
             className="btn-login"
             onClick={ () => buttontName === "Login" ? setButtonName("Logout") : setButtonName("Login")}

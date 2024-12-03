@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import ShimmerCard from "../src/components/Body/ShimmerCard";
 
 const useRestaurantMenu = (restaurantId) => {
-    const [ restaurantInfo, setRestaurantInfo ] = useState(restaurantId);
+    const [ restaurantInfo, setRestaurantInfo ] = useState(null);
     useEffect(() => {
         fetchMenu();
     }, []);
@@ -17,7 +17,6 @@ const useRestaurantMenu = (restaurantId) => {
         console.log(json);
         setRestaurantInfo(json.data);
     }
-    if(restaurantInfo === null) return <ShimmerCard/>;
-
+    return restaurantInfo;
 }
 export default useRestaurantMenu;

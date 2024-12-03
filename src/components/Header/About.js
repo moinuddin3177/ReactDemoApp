@@ -1,3 +1,4 @@
+import UserContext from "../../../utils/UserContext";
 import UserClass from "./UserClass";
 import React  from "react";
 class About extends React.Component {
@@ -39,6 +40,12 @@ class About extends React.Component {
                 <h2>About Me !</h2>
             {/* <h2><User name={"Moin passed as props func"}/> </h2> */}
             {/* <h2><UserClass name={"Moin "} location={"london"}/></h2> */}
+            <div>
+                loggedIn User
+                <UserContext.Consumer>
+                    {(data) => <h2 className="font-bold">{data.loggedInUser}</h2>}
+                </UserContext.Consumer>
+            </div>
             <h4>Name: {login}</h4>
             <h4>Avatar: <img src= {avatar_url}/></h4>
             <h4>Url: {url}</h4>

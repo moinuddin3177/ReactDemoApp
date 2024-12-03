@@ -1,18 +1,17 @@
 import logo_url from "../../../utils/constant";
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../../../utils/useOnlineStatus";
+import UserContext from "../../../utils/UserContext";
 
 const Header = () => {
   const [buttontName, setButtonName] = useState("Login");
   const onlineStatus = useOnlineStatus();
+  const data = useContext(UserContext);
   // if no dependency array is passed => useEffect will called on every render
   // if dependency array is empty => useEfect is called on initial render(just once)
   // if dependency array is passed => useEffect is called every time passed dependency changes
 
-  useEffect(() => {
-    console.log("useEffect Rendered");
-  }, [buttontName])
 
   return (
     <div className="flex justify-between bg-pink-100 shadow-md m-2">
@@ -35,6 +34,9 @@ const Header = () => {
           </li>
           <li className="px-4">
             <Link to="/grocery">Grocery</Link>
+          </li>
+          <li className="px-4 font-bold">
+            User: {data.loggedInUser}
           </li>
           <button 
             className="btn-login"

@@ -1,13 +1,15 @@
-import RestaurantCard from "./RestaurantCard";
-import { useEffect, useState } from "react";
+import RestaurantCard, { PromotedCard }  from "./RestaurantCard";
+import { useContext, useEffect, useState } from "react";
 import ShimmerCard from "./ShimmerCard";
 // import axios from "axios";
 import { Link } from "react-router-dom";
+import UserContext from "../../../utils/UserContext";
 
 export const Body = () => {
   const [api_data, setapi_data] = useState([]);
   const [searchText, setSearchText] = useState("");
 
+  const RestaurantCardPromoted = PromotedCard(RestaurantCard);
   useEffect(() => {
     fetchData();
   }, []);
@@ -50,6 +52,7 @@ export const Body = () => {
     }
   };
 
+  const { loggedInUser, setUserName} = useContext(UserContext);
   return api_data.length === 0 ? (
     <ShimmerCard />
   ) : (
@@ -83,10 +86,20 @@ export const Body = () => {
         >
           Top rated restaurants
         </button>
+        <label>UserName : </label>
+        <input 
+          type ="text"
+            className="border border-black p-2"
+            value={loggedInUser}
+            onChange={(e) => setUserName(e.target.value)}
+        />
       </div>
       <div className=" flex flex-wrap">
         {api_data.map((restaurant) => (
-          <Link key={restaurant.name} to={"/restaurant/" + restaurant.id}><RestaurantCard restaurant_data={restaurant} /></Link>
+          <Link key={restaurant.name} to={"/restaurant/" + restaurant.id}>
+            {restaurant.isOpen ? <RestaurantCardPromoted restaurant_data={restaurant} /> : <RestaurantCard restaurant_data={restaurant} /> }
+          
+          </Link>
         ))}
       </div>
     </div>

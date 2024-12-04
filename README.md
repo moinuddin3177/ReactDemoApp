@@ -66,3 +66,10 @@
 # Custom Hooks
 - useRestaurantMenu
 
+# Reduc ToolKit
+- Install @reduxjs/toolkit and reeact-redux
+- Build our store
+- Connect our store to our app
+- Slice (cartSlice)
+- dispatch (action)
+- selector 

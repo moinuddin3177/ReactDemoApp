@@ -1,8 +1,14 @@
+import { useDispatch } from "react-redux";
+import { addItem } from "../../../Redux/cartSlice";
+
 const RestaurantCategoryItems = (items) => {
-    console.log(items);
+    const dispatch = useDispatch();
+    const handleAddItem = (item) => {
+        dispatch(addItem(item));
+    }
     return (
         <div>
-            { items.items.map((item) => (
+            { items?.items.map((item) => (
                 <div className="flex justify-between w-max">
                 <div 
                     key={item.card.info.id} 
@@ -16,7 +22,12 @@ const RestaurantCategoryItems = (items) => {
                     </div>
                     <div className="w-3/12 p-4 ">  
                     <div className="absolute">
-                        <button className="p-2 bg-black text-white shadow-lg mx-5 rounded-lg">Add +</button>
+                        <button 
+                            className="p-2 bg-black text-white shadow-lg mx-5 rounded-lg"
+                            onClick={ () => handleAddItem(item)}
+                        >
+                            Add +
+                        </button>
                     </div>
                  </div>   
                 </div>
